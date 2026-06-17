@@ -11,6 +11,11 @@ const services = [
   { icon: 'Plane', title: 'Трэвэл-шоу', desc: 'Кинематографичные путешествия с авторской цветокоррекцией и звуком.' },
 ];
 
+const pricing = [
+  { icon: 'Smartphone', title: 'Reels', price: '50 000', desc: 'Вертикальный ролик под ключ: съёмка, монтаж, звук, титры.', featured: false },
+  { icon: 'Mic', title: 'Подкаст', price: '300 000', desc: 'Многокамерная съёмка выпуска и динамичный монтаж.', featured: true },
+];
+
 const portfolio = [
   'tTCQBQeh_G8',
   'I-d5O9VtLuc',
@@ -33,6 +38,7 @@ const Index = () => {
           </a>
           <nav className="hidden md:flex items-center gap-10 text-sm uppercase tracking-widest text-muted-foreground">
             <a href="#services" className="hover:text-foreground transition-colors">Услуги</a>
+            <a href="#pricing" className="hover:text-foreground transition-colors">Цены</a>
             <a href="#work" className="hover:text-foreground transition-colors">Портфолио</a>
             <a href="#contact" className="hover:text-foreground transition-colors">Контакты</a>
           </nav>
@@ -86,12 +92,43 @@ const Index = () => {
         </div>
       </section>
 
+      {/* PRICING */}
+      <section id="pricing" className="px-6 py-24 border-t border-border">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-end justify-between mb-14">
+            <h2 className="font-display font-bold uppercase text-4xl md:text-6xl tracking-tight">Цены</h2>
+            <span className="font-display text-muted-foreground text-sm uppercase tracking-widest">02 / Стоимость</span>
+          </div>
+          <div className="grid md:grid-cols-2 gap-px bg-border max-w-3xl">
+            {pricing.map((p, i) => (
+              <div
+                key={i}
+                className={`p-10 flex flex-col ${p.featured ? 'bg-brand text-white' : 'bg-card'}`}
+              >
+                <div className={`w-12 h-12 flex items-center justify-center mb-6 ${p.featured ? 'bg-white text-brand' : 'bg-brand text-white'}`}>
+                  <Icon name={p.icon} size={24} />
+                </div>
+                <h3 className="font-display font-semibold uppercase text-2xl tracking-wide mb-2">{p.title}</h3>
+                <p className={`text-sm leading-relaxed mb-8 ${p.featured ? 'text-white/80' : 'text-muted-foreground'}`}>{p.desc}</p>
+                <div className="mt-auto flex items-baseline gap-2">
+                  <span className="font-display font-bold text-5xl tracking-tight">{p.price}</span>
+                  <span className="font-display uppercase text-sm tracking-widest opacity-70">тенге</span>
+                </div>
+                <Button asChild className={`mt-8 rounded-none font-display uppercase tracking-wider ${p.featured ? 'bg-white text-brand hover:bg-white/90' : 'bg-brand text-white hover:bg-brand/85'}`}>
+                  <a href="#contact">Заказать</a>
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PORTFOLIO */}
       <section id="work" className="px-6 py-24 border-t border-border">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-14">
             <h2 className="font-display font-bold uppercase text-4xl md:text-6xl tracking-tight">Портфолио</h2>
-            <span className="font-display text-muted-foreground text-sm uppercase tracking-widest">02 / Вертикальные ролики</span>
+            <span className="font-display text-muted-foreground text-sm uppercase tracking-widest">03 / Вертикальные ролики</span>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {portfolio.map((id) => (
@@ -132,7 +169,7 @@ const Index = () => {
       <section id="contact" className="px-6 py-24 border-t border-border">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
           <div>
-            <span className="font-display text-muted-foreground text-sm uppercase tracking-widest">03 / Контакты</span>
+            <span className="font-display text-muted-foreground text-sm uppercase tracking-widest">04 / Контакты</span>
             <h2 className="font-display font-bold uppercase text-4xl md:text-6xl tracking-tight mt-4 mb-8">
               Снимем<br /><span className="text-brand">что-то крутое?</span>
             </h2>
